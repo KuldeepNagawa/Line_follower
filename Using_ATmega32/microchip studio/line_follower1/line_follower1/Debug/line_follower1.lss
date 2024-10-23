@@ -1,0 +1,278 @@
+
+line_follower1.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         0000006c  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00800060  00800060  0000019a  2**0
+                  ALLOC, LOAD, DATA
+  2 .comment      0000002f  00000000  00000000  0000019a  2**0
+                  CONTENTS, READONLY
+  3 .stack.descriptors.hdr 0000000e  00000000  00000000  000001c9  2**0
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000040  00000000  00000000  000001d7  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   000008e7  00000000  00000000  00000217  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 0000059c  00000000  00000000  00000afe  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   000002d0  00000000  00000000  0000109a  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000064  00000000  00000000  0000136c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    00000196  00000000  00000000  000013d0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    00000077  00000000  00000000  00001566  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000030  00000000  00000000  000015dd  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .text         00000004  00000118  00000118  0000018c  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 13 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00001610  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 14 .text.motor_stop 0000000e  000000e0  000000e0  00000154  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 15 .text.motor_forward 0000000e  000000ee  000000ee  00000162  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 16 .text.motor_left 0000000e  000000fc  000000fc  00000170  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 17 .text.motor_right 0000000e  0000010a  0000010a  0000017e  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 18 .text.main    0000005e  0000006c  0000006c  000000e0  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 19 .text.__dummy_fini 00000002  00000120  00000120  00000194  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 20 .text.__dummy_funcs_on_exit 00000002  00000122  00000122  00000196  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 21 .text.__dummy_simulator_exit 00000002  00000124  00000124  00000198  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 22 .text.exit    00000016  000000ca  000000ca  0000013e  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 23 .text._Exit   00000004  0000011c  0000011c  00000190  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 8c 00 	jmp	0x118	; 0x118 <__bad_interrupt>
+   8:	0c 94 8c 00 	jmp	0x118	; 0x118 <__bad_interrupt>
+   c:	0c 94 8c 00 	jmp	0x118	; 0x118 <__bad_interrupt>
+  10:	0c 94 8c 00 	jmp	0x118	; 0x118 <__bad_interrupt>
+  14:	0c 94 8c 00 	jmp	0x118	; 0x118 <__bad_interrupt>
+  18:	0c 94 8c 00 	jmp	0x118	; 0x118 <__bad_interrupt>
+  1c:	0c 94 8c 00 	jmp	0x118	; 0x118 <__bad_interrupt>
+  20:	0c 94 8c 00 	jmp	0x118	; 0x118 <__bad_interrupt>
+  24:	0c 94 8c 00 	jmp	0x118	; 0x118 <__bad_interrupt>
+  28:	0c 94 8c 00 	jmp	0x118	; 0x118 <__bad_interrupt>
+  2c:	0c 94 8c 00 	jmp	0x118	; 0x118 <__bad_interrupt>
+  30:	0c 94 8c 00 	jmp	0x118	; 0x118 <__bad_interrupt>
+  34:	0c 94 8c 00 	jmp	0x118	; 0x118 <__bad_interrupt>
+  38:	0c 94 8c 00 	jmp	0x118	; 0x118 <__bad_interrupt>
+  3c:	0c 94 8c 00 	jmp	0x118	; 0x118 <__bad_interrupt>
+  40:	0c 94 8c 00 	jmp	0x118	; 0x118 <__bad_interrupt>
+  44:	0c 94 8c 00 	jmp	0x118	; 0x118 <__bad_interrupt>
+  48:	0c 94 8c 00 	jmp	0x118	; 0x118 <__bad_interrupt>
+  4c:	0c 94 8c 00 	jmp	0x118	; 0x118 <__bad_interrupt>
+  50:	0c 94 8c 00 	jmp	0x118	; 0x118 <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+  60:	0e 94 36 00 	call	0x6c	; 0x6c <_etext>
+  64:	0c 94 65 00 	jmp	0xca	; 0xca <exit>
+
+00000068 <_exit>:
+  68:	f8 94       	cli
+
+0000006a <__stop_program>:
+  6a:	ff cf       	rjmp	.-2      	; 0x6a <__stop_program>
+
+Disassembly of section .text:
+
+00000118 <__bad_interrupt>:
+ 118:	0c 94 00 00 	jmp	0	; 0x0 <__TEXT_REGION_ORIGIN__>
+
+Disassembly of section .text.motor_stop:
+
+000000e0 <motor_stop>:
+// Define sensor input pins
+#define LEFT_SENSOR  PB0  // Left IR sensor connected to B0
+#define RIGHT_SENSOR PB1  // Right IR sensor connected to B1
+
+void motor_stop() {
+	PORTD &= ~(1 << MOTOR_LEFT_FORWARD);  // Stop left motor
+  e0:	82 b3       	in	r24, 0x12	; 18
+  e2:	8e 7f       	andi	r24, 0xFE	; 254
+  e4:	82 bb       	out	0x12, r24	; 18
+	PORTD &= ~(1 << MOTOR_RIGHT_FORWARD); // Stop right motor
+  e6:	82 b3       	in	r24, 0x12	; 18
+  e8:	8d 7f       	andi	r24, 0xFD	; 253
+  ea:	82 bb       	out	0x12, r24	; 18
+  ec:	08 95       	ret
+
+Disassembly of section .text.motor_forward:
+
+000000ee <motor_forward>:
+}
+
+void motor_forward() {
+	PORTD |= (1 << MOTOR_LEFT_FORWARD);   // Move left motor forward
+  ee:	82 b3       	in	r24, 0x12	; 18
+  f0:	81 60       	ori	r24, 0x01	; 1
+  f2:	82 bb       	out	0x12, r24	; 18
+	PORTD |= (1 << MOTOR_RIGHT_FORWARD);  // Move right motor forward
+  f4:	82 b3       	in	r24, 0x12	; 18
+  f6:	82 60       	ori	r24, 0x02	; 2
+  f8:	82 bb       	out	0x12, r24	; 18
+  fa:	08 95       	ret
+
+Disassembly of section .text.motor_left:
+
+000000fc <motor_left>:
+}
+
+void motor_left() {
+	PORTD &= ~(1 << MOTOR_RIGHT_FORWARD); // Stop right motor
+  fc:	82 b3       	in	r24, 0x12	; 18
+  fe:	8d 7f       	andi	r24, 0xFD	; 253
+ 100:	82 bb       	out	0x12, r24	; 18
+	PORTD |= (1 << MOTOR_LEFT_FORWARD);   // Move left motor forward
+ 102:	82 b3       	in	r24, 0x12	; 18
+ 104:	81 60       	ori	r24, 0x01	; 1
+ 106:	82 bb       	out	0x12, r24	; 18
+ 108:	08 95       	ret
+
+Disassembly of section .text.motor_right:
+
+0000010a <motor_right>:
+}
+
+void motor_right() {
+	PORTD &= ~(1 << MOTOR_LEFT_FORWARD);  // Stop left motor
+ 10a:	82 b3       	in	r24, 0x12	; 18
+ 10c:	8e 7f       	andi	r24, 0xFE	; 254
+ 10e:	82 bb       	out	0x12, r24	; 18
+	PORTD |= (1 << MOTOR_RIGHT_FORWARD);  // Move right motor forward
+ 110:	82 b3       	in	r24, 0x12	; 18
+ 112:	82 60       	ori	r24, 0x02	; 2
+ 114:	82 bb       	out	0x12, r24	; 18
+ 116:	08 95       	ret
+
+Disassembly of section .text.main:
+
+0000006c <main>:
+}
+
+int main(void) {
+	// Set motor control pins as output
+	DDRD |= (1 << MOTOR_LEFT_FORWARD) | (1 << MOTOR_RIGHT_FORWARD);
+  6c:	81 b3       	in	r24, 0x11	; 17
+  6e:	83 60       	ori	r24, 0x03	; 3
+  70:	81 bb       	out	0x11, r24	; 17
+
+	// Set sensor input pins as input
+	DDRB &= ~((1 << LEFT_SENSOR) | (1 << RIGHT_SENSOR));
+  72:	87 b3       	in	r24, 0x17	; 23
+  74:	8c 7f       	andi	r24, 0xFC	; 252
+  76:	87 bb       	out	0x17, r24	; 23
+
+	while(1) {
+		// Read sensor values
+		uint8_t left_sensor_value = PINB & (1 << LEFT_SENSOR);
+  78:	26 b3       	in	r18, 0x16	; 22
+		uint8_t right_sensor_value = PINB & (1 << RIGHT_SENSOR);
+  7a:	86 b3       	in	r24, 0x16	; 22
+  7c:	82 70       	andi	r24, 0x02	; 2
+
+		// If both sensors detect the line (1, 1), move forward
+		if (left_sensor_value != 0 && right_sensor_value != 0) {
+  7e:	92 2f       	mov	r25, r18
+  80:	91 70       	andi	r25, 0x01	; 1
+  82:	20 ff       	sbrs	r18, 0
+  84:	05 c0       	rjmp	.+10     	; 0x90 <main+0x24>
+  86:	88 23       	and	r24, r24
+  88:	19 f0       	breq	.+6      	; 0x90 <main+0x24>
+			motor_forward();
+  8a:	0e 94 77 00 	call	0xee	; 0xee <motor_forward>
+  8e:	13 c0       	rjmp	.+38     	; 0xb6 <main+0x4a>
+		}
+		// If both sensors are off the line (0, 0), stop
+		else if (left_sensor_value == 0 && right_sensor_value == 0) {
+  90:	91 11       	cpse	r25, r1
+  92:	05 c0       	rjmp	.+10     	; 0x9e <main+0x32>
+  94:	81 11       	cpse	r24, r1
+  96:	03 c0       	rjmp	.+6      	; 0x9e <main+0x32>
+			motor_stop();
+  98:	0e 94 70 00 	call	0xe0	; 0xe0 <motor_stop>
+  9c:	0c c0       	rjmp	.+24     	; 0xb6 <main+0x4a>
+		}
+		// If the left sensor detects the line (1, 0), turn left
+		else if (left_sensor_value != 0 && right_sensor_value == 0) {
+  9e:	99 23       	and	r25, r25
+  a0:	29 f0       	breq	.+10     	; 0xac <main+0x40>
+  a2:	81 11       	cpse	r24, r1
+  a4:	03 c0       	rjmp	.+6      	; 0xac <main+0x40>
+			motor_left();
+  a6:	0e 94 7e 00 	call	0xfc	; 0xfc <motor_left>
+  aa:	05 c0       	rjmp	.+10     	; 0xb6 <main+0x4a>
+		}
+		// If the right sensor detects the line (0, 1), turn right
+		else if (left_sensor_value == 0 && right_sensor_value != 0) {
+  ac:	91 11       	cpse	r25, r1
+  ae:	03 c0       	rjmp	.+6      	; 0xb6 <main+0x4a>
+  b0:	81 11       	cpse	r24, r1
+			motor_right();
+  b2:	0e 94 85 00 	call	0x10a	; 0x10a <motor_right>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  b6:	2f ef       	ldi	r18, 0xFF	; 255
+  b8:	80 e7       	ldi	r24, 0x70	; 112
+  ba:	92 e0       	ldi	r25, 0x02	; 2
+  bc:	21 50       	subi	r18, 0x01	; 1
+  be:	80 40       	sbci	r24, 0x00	; 0
+  c0:	90 40       	sbci	r25, 0x00	; 0
+  c2:	e1 f7       	brne	.-8      	; 0xbc <main+0x50>
+  c4:	00 c0       	rjmp	.+0      	; 0xc6 <main+0x5a>
+  c6:	00 00       	nop
+  c8:	d7 cf       	rjmp	.-82     	; 0x78 <main+0xc>
+
+Disassembly of section .text.__dummy_fini:
+
+00000120 <_fini>:
+ 120:	08 95       	ret
+
+Disassembly of section .text.__dummy_funcs_on_exit:
+
+00000122 <__funcs_on_exit>:
+ 122:	08 95       	ret
+
+Disassembly of section .text.__dummy_simulator_exit:
+
+00000124 <__simulator_exit>:
+ 124:	08 95       	ret
+
+Disassembly of section .text.exit:
+
+000000ca <exit>:
+  ca:	ec 01       	movw	r28, r24
+  cc:	0e 94 91 00 	call	0x122	; 0x122 <__funcs_on_exit>
+  d0:	0e 94 90 00 	call	0x120	; 0x120 <_fini>
+  d4:	ce 01       	movw	r24, r28
+  d6:	0e 94 92 00 	call	0x124	; 0x124 <__simulator_exit>
+  da:	ce 01       	movw	r24, r28
+  dc:	0e 94 8e 00 	call	0x11c	; 0x11c <_Exit>
+
+Disassembly of section .text._Exit:
+
+0000011c <_Exit>:
+ 11c:	0e 94 34 00 	call	0x68	; 0x68 <_exit>
